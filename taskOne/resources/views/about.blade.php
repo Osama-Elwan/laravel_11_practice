@@ -12,5 +12,14 @@
         </div>
     </div>
 </section>
-
+@include('gallery')
 @endsection
+
+
+@push('scripts')
+<script>
+    $(document).ready(function(){
+        alert("This Script is for About page");
+    })
+</script>
+@endpush
