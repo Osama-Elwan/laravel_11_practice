@@ -21,10 +21,10 @@
     @include('gallery')
 @endsection
 
-@push('scripts')
+{{-- @push('scripts')
 <script>
     $(document).ready(function(){
         alert("This Script is for Home page");
     })
 </script>
-@endpush
+@endpush --}}
