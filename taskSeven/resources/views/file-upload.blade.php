@@ -4,8 +4,12 @@
     <section>
         <div class="row justify-content-center">
             <div class="col-md-6">
-
                 <div class="card mt-5 mb-5">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 <div class="card-body mt-5 mb-5">
                     <form action="{{ route('file.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf

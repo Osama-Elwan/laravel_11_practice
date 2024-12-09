@@ -58,7 +58,8 @@ class FileUploadController extends Controller
 
         //file validaton
         $request->validate([
-            'file' => ['required','image','mimes:png,jpg','max:4000'],//max using kilobyte
+            // 'file' => ['required','image','mimes:png,jpg','max:4000'],//max using kilobyte
+            'file' => ['required','image','max:4000'],//max using kilobyte
         ]);
 
         //customize name
@@ -73,12 +74,22 @@ class FileUploadController extends Controller
         $fileStore = new File();
         $fileStore->file_path = '/uploads/'.$path;
         $fileStore->save();
-        dd('stored');
+        // dd('stored');
+        // return redirect()->back();
+        // return redirect()->route('home');
+        // return redirect()->action([Controller::class,'method']);//if u need anoter action Important one
+        // return redirect()->action([Controller::class,'method'],
+        // ,['id',1]
+        // );//if u need anoter action with parameter Important one
+        // return redirect()->away('https://www.google.com');//to push request to external website not our website
+        return redirect('/file-upload')->with('status', 'image Uploaded!'); //redirct to some where with message status will save in (session) look at line:7 (file-upload.blade)
+        // return response()->download('$filepath');
+
     }
 
     function download()
     {
-        return Storage::disk('local')->download('FoZO5SFVY9lCfPw5pCGg7G5XoKdwVUBKA1ZntTWa.jpg');
+        return Storage::disk('local')->download('FoZO5SFVY9lCfPw5pCGg7G5XoKdwVUBKA1ZntTWa.jpg');//file path on download
         // $imageFiles = Storage::disk('local')->files('images');//to access local
         // $imageFiles = Storage::disk('local')->files();//to access local
         // dd($imageFiles);
